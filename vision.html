@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Personal Vision & Wishlist — Luxury Moodboard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background-color: #0b0b0d;
+      color: #e5e5e5;
+      padding: 40px 20px;
+      min-height: 100vh;
+    }
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 50px;
+    }
+    header span {
+      text-transform: uppercase;
+      letter-spacing: 4px;
+      font-size: 10px;
+      color: #a39382;
+      display: block;
+      margin-bottom: 8px;
+    }
+    header h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 44px;
+      color: #ffffff;
+      font-weight: 400;
+    }
+    header h1 i {
+      color: #d4af37;
+      font-style: italic;
+    }
+
+    /* ФОРМА ДОБАВЛЕНИЯ */
+    .add-card {
+      background: rgba(18, 18, 22, 0.9);
+      border: 1px solid rgba(212, 175, 55, 0.25);
+      border-radius: 16px;
+      padding: 28px;
+      margin-bottom: 50px;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+    }
+    .form-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 22px;
+      color: #d4af37;
+      margin-bottom: 20px;
+    }
+    .form-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 18px;
+    }
+    .form-group label {
+      display: block;
+      font-size: 10px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #a39382;
+      margin-bottom: 8px;
+    }
+    .form-group input, .form-group select {
+      width: 100%;
+      padding: 12px 14px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 8px;
+      color: #fff;
+      font-size: 13px;
+      outline: none;
+      transition: all 0.3s ease;
+    }
+    .form-group input:focus, .form-group select:focus {
+      border-color: #d4af37;
+      background: rgba(255, 255, 255, 0.07);
+    }
+
+    .file-input-wrapper {
+      position: relative;
+    }
+    .file-input-wrapper input[type="file"] {
+      display: none;
+    }
+    .file-btn {
+      display: block;
+      width: 100%;
+      padding: 12px;
+      background: rgba(212, 175, 55, 0.1);
+      border: 1px dashed #d4af37;
+      border-radius: 8px;
+      color: #d4af37;
+      text-align: center;
+      font-size: 11px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    .file-btn:hover {
+      background: rgba(212, 175, 55, 0.2);
+    }
+
+    .btn-submit {
+      grid-column: 1 / -1;
+      padding: 14px;
+      background: linear-gradient(135deg, #d4af37 0%, #aa820a 100%);
+      color: #0b0b0d;
+      border: none;
+      border-radius: 8px;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      font-size: 11px;
+      cursor: pointer;
+      margin-top: 10px;
+      transition: all 0.3s ease;
+    }
+    .btn-submit:hover {
+      box-shadow: 0 0 20px rgba(212, 175, 55, 0.4);
+      transform: translateY(-2px);
+    }
+
+    /* ФИЛЬТРЫ */
+    .filter-bar {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      margin-bottom: 40px;
+      flex-wrap: wrap;
+    }
+    .filter-btn {
+      background: transparent;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      color: #a39382;
+      padding: 8px 18px;
+      border-radius: 20px;
+      font-size: 10px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    .filter-btn.active, .filter-btn:hover {
+      border-color: #d4af37;
+      color: #d4af37;
+      background: rgba(212, 175, 55, 0.05);
+    }
+
+    /* СЕТКА ГАЛЕРЕИ KINFOLK / VOGUE STYLE */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 28px;
+    }
+    .vision-card {
+      background: rgba(18, 18, 22, 0.8);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 14px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+      position: relative;
+    }
+    .vision-card:hover {
+      transform: translateY(-8px);
+      border-color: rgba(212, 175, 55, 0.4);
+      box-shadow: 0 15px 35px rgba(0,0,0,0.7);
+    }
+    .img-wrapper {
+      width: 100%;
+      height: 320px;
+      overflow: hidden;
+      position: relative;
+    }
+    .vision-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s ease;
+    }
+    .vision-card:hover .vision-img {
+      transform: scale(1.05);
+    }
+    .category-badge {
+      position: absolute;
+      top: 14px;
+      left: 14px;
+      background: rgba(11, 11, 13, 0.75);
+      border: 1px solid rgba(212, 175, 55, 0.4);
+      color: #d4af37;
+      font-size: 8px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 5px 10px;
+      border-radius: 4px;
+      backdrop-filter: blur(6px);
+    }
+    .card-body {
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      flex-grow: 1;
+    }
+    .card-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 20px;
+      color: #ffffff;
+      margin-bottom: 8px;
+    }
+    .card-desc {
+      font-size: 12px;
+      color: #a39382;
+      line-height: 1.5;
+      margin-bottom: 16px;
+    }
+    .card-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+      padding-top: 12px;
+    }
+    .card-price {
+      font-size: 13px;
+      color: #d4af37;
+      font-weight: 500;
+    }
+    .btn-delete {
+      background: transparent;
+      border: none;
+      color: #666;
+      cursor: pointer;
+      font-size: 12px;
+      transition: color 0.3s ease;
+    }
+    .btn-delete:hover {
+      color: #e74c3c;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <header>
+      <span>— PRIVATE MOODBOARD —</span>
+      <h1>Personal <i>&</i> Vision Board</h1>
+    </header>
+
+    <!-- ФОРМА ДОБАВЛЕНИЯ КАРТОЧКИ -->
+    <div class="add-card">
+      <div class="form-title">✦ Добавить цель или фото в коллекцию</div>
+      <form id="visionForm">
+        <div class="form-grid">
+          <div class="form-group">
+            <label>Название *</label>
+            <input type="text" id="titleInput" placeholder="например: Париж, Отель Costes" required>
+          </div>
+          
+          <div class="form-group">
+            <label>Категория</label>
+            <select id="categoryInput">
+              <option value="Travel">✈️ Travel & Escapes</option>
+              <option value="Style">👗 Outfits & Style</option>
+              <option value="Living">🏡 Dream Living</option>
+              <option value="Career">💼 Career & Ambitions</option>
+              <option value="Wishlist">🛍️ Wishlist & Luxuries</option>
+              <option value="Personal">📸 Personal & Vibe</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>Загрузить своё фото</label>
+            <div class="file-input-wrapper">
+              <label for="fileInput" class="file-btn" id="fileBtnText">📁 Выбрать файл с телефона</label>
+              <input type="file" id="fileInput" accept="image/*">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>Или вставить URL картинки</label>
+            <input type="url" id="urlInput" placeholder="https://images.unsplash.com/...">
+          </div>
+
+          <div class="form-group" style="grid-column: span 2;">
+            <label>Описание / Заметка</label>
+            <input type="text" id="descInput" placeholder="Опишите ваши эмоции или детали...">
+          </div>
+
+          <button type="submit" class="btn-submit">Добавить на Vision Board</button>
+        </div>
+      </form>
+    </div>
+
+    <!-- ФИЛЬТРЫ КАТЕГОРИЙ -->
+    <div class="filter-bar">
+      <button class="filter-btn active" onclick="filterCategory('All')">Все</button>
+      <button class="filter-btn" onclick="filterCategory('Travel')">Travel</button>
+      <button class="filter-btn" onclick="filterCategory('Style')">Style</button>
+      <button class="filter-btn" onclick="filterCategory('Living')">Living</button>
+      <button class="filter-btn" onclick="filterCategory('Career')">Career</button>
+      <button class="filter-btn" onclick="filterCategory('Wishlist')">Wishlist</button>
+      <button class="filter-btn" onclick="filterCategory('Personal')">Personal</button>
+    </div>
+
+    <!-- ГАЛЕРЕЯ -->
+    <div class="gallery-grid" id="galleryGrid"></div>
+  </div>
+
+  <script>
+    let visionItems = JSON.parse(localStorage.getItem('my_vision_board')) || [
+      {
+        id: 1,
+        title: "Амальфитанское побережье",
+        category: "Travel",
+        desc: "Утренний кофе с видом на море и скалы Италии.",
+        image: "https://images.unsplash.com/photo-1533105079780-92b9be482077?q=80&w=800"
+      },
+      {
+        id: 2,
+        title: "Old Money Style Outfit",
+        category: "Style",
+        desc: "Кашемировый свитер, шелковая юбка и лаконичные украшения.",
+        image: "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=800"
+      },
+      {
+        id: 3,
+        title: "Светлая студия с панорамой",
+        category: "Living",
+        desc: "Просторная гостиная с высокими потолками и естественным светом.",
+        image: "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?q=80&w=800"
+      }
+    ];
+
+    let selectedFileData = null;
+    let currentFilter = 'All';
+
+    // Слушатель выбора файла
+    document.getElementById('fileInput').addEventListener('change', function(e) {
+      const file = e.target.files[0];
+      if (file) {
+        document.getElementById('fileBtnText').textContent = '✓ Фото выбрано: ' + file.name;
+        const reader = new FileReader();
+        reader.onload = function(event) {
+          selectedFileData = event.target.result;
+        };
+        reader.readAsDataURL(file);
+      }
+    });
+
+    // Отрисовка карточек
+    function renderGallery() {
+      const grid = document.getElementById('galleryGrid');
+      grid.innerHTML = '';
+
+      const filtered = currentFilter === 'All' 
+        ? visionItems 
+        : visionItems.filter(item => item.category === currentFilter);
+
+      filtered.forEach(item => {
+        const card = document.createElement('div');
+        card.className = 'vision-card';
+        card.innerHTML = `
+          <div class="img-wrapper">
+            <span class="category-badge">${item.category}</span>
+            <img src="${item.image}" class="vision-img" alt="${item.title}">
+          </div>
+          <div class="card-body">
+            <div>
+              <div class="card-title">${item.title}</div>
+              <div class="card-desc">${item.desc || ''}</div>
+            </div>
+            <div class="card-footer">
+              <span style="font-size: 10px; color: #666;">✦ APPROVED</span>
+              <button class="btn-delete" onclick="deleteItem(${item.id})">Удалить</button>
+            </div>
+          </div>
+        `;
+        grid.appendChild(card);
+      });
+
+      localStorage.setItem('my_vision_board', JSON.stringify(visionItems));
+    }
+
+    // Добавление
+    document.getElementById('visionForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      const title = document.getElementById('titleInput').value;
+      const category = document.getElementById('categoryInput').value;
+      const desc = document.getElementById('descInput').value;
+      const url = document.getElementById('urlInput').value;
+
+      let imageToUse = selectedFileData || url || 'https://images.unsplash.com/photo-1512436991641-6745cdb1723f?q=80&w=800';
+
+      const newItem = {
+        id: Date.now(),
+        title: title,
+        category: category,
+        desc: desc,
+        image: imageToUse
+      };
+
+      visionItems.unshift(newItem);
+      renderGallery();
+
+      // Сброс формы
+      this.reset();
+      selectedFileData = null;
+      document.getElementById('fileBtnText').textContent = '📁 Выбрать файл с телефона';
+    });
+
+    // Удаление
+    function deleteItem(id) {
+      visionItems = visionItems.filter(i => i.id !== id);
+      renderGallery();
+    }
+
+    // Фильтрация
+    function filterCategory(cat) {
+      currentFilter = cat;
+      document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+      event.target.classList.add('active');
+      renderGallery();
+    }
+
+    renderGallery();
+  </script>
+
+</body>
+</html>
