@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Personal Vision & Wishlist — Luxury Moodboard</title>
+  <title>Vision & Desires — Editorial Collection</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
   <style>
     * {
@@ -14,352 +14,450 @@
       margin: 0;
       padding: 0;
     }
+
     body {
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      background-color: #0b0b0d;
-      color: #e5e5e5;
-      padding: 40px 20px;
-      min-height: 100vh;
+      font-family: 'Plus Jakarta Sans', -apple-system, sans-serif;
+      background-color: #F4F1EA;
+      color: #2C1A14;
+      padding: 0 0 100px 0;
+      line-height: 1.4;
     }
+
     .container {
-      max-width: 1200px;
+      max-width: 1280px;
       margin: 0 auto;
+      padding: 0 24px;
     }
 
-    header {
-      text-align: center;
-      margin-bottom: 50px;
+    /* БАННЕР / EDITORIAL HERO */
+    .hero-section {
+      position: relative;
+      width: 100%;
+      height: 70vh;
+      min-height: 480px;
+      margin-bottom: 80px;
+      overflow: hidden;
     }
-    header span {
+
+    .hero-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: brightness(0.88);
+    }
+
+    .hero-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      padding: 40px 24px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      max-width: 1280px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .hero-title {
+      font-size: clamp(36px, 7vw, 92px);
+      font-weight: 600;
+      letter-spacing: -2px;
+      color: #FFFFFF;
       text-transform: uppercase;
-      letter-spacing: 4px;
-      font-size: 10px;
-      color: #a39382;
-      display: block;
-      margin-bottom: 8px;
-    }
-    header h1 {
-      font-family: 'Playfair Display', serif;
-      font-size: 44px;
-      color: #ffffff;
-      font-weight: 400;
-    }
-    header h1 i {
-      color: #d4af37;
-      font-style: italic;
+      line-height: 0.95;
+      max-width: 900px;
     }
 
-    /* ФОРМА ДОБАВЛЕНИЯ */
-    .add-card {
-      background: rgba(18, 18, 22, 0.9);
-      border: 1px solid rgba(212, 175, 55, 0.25);
-      border-radius: 16px;
-      padding: 28px;
-      margin-bottom: 50px;
-      backdrop-filter: blur(10px);
-      box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+    .hero-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
     }
-    .form-title {
-      font-family: 'Playfair Display', serif;
-      font-size: 22px;
-      color: #d4af37;
-      margin-bottom: 20px;
+
+    .hero-sub {
+      color: #FFFFFF;
+      font-size: 13px;
+      max-width: 300px;
+      letter-spacing: -0.2px;
+      opacity: 0.9;
     }
+
+    .btn-hero {
+      background: #FFFFFF;
+      color: #2C1A14;
+      padding: 14px 28px;
+      border-radius: 40px;
+      border: none;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+
+    .btn-hero:hover {
+      transform: scale(1.03);
+    }
+
+    /* РАЗДЕЛ О СЕБЕ / ЖУРНАЛЬНЫЙ БЛОК */
+    .editorial-intro {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      padding-bottom: 80px;
+      border-bottom: 1px solid rgba(44, 26, 20, 0.15);
+      margin-bottom: 80px;
+      align-items: center;
+    }
+
+    .intro-title {
+      font-size: clamp(28px, 4vw, 54px);
+      font-weight: 600;
+      letter-spacing: -1.5px;
+      text-transform: uppercase;
+      line-height: 1;
+    }
+
+    .intro-text {
+      font-size: 15px;
+      color: #52423B;
+      line-height: 1.6;
+    }
+
+    /* ФОРМА ДОБАВЛЕНИЯ В МИНИМАЛИСТИЧНОМ СТИЛЕ */
+    .form-section {
+      background: #EBE6DC;
+      padding: 40px;
+      border-radius: 4px;
+      margin-bottom: 80px;
+      border: 1px solid rgba(44, 26, 20, 0.1);
+    }
+
+    .form-header {
+      font-size: 20px;
+      font-weight: 600;
+      letter-spacing: -0.5px;
+      margin-bottom: 24px;
+      text-transform: uppercase;
+    }
+
     .form-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 18px;
-    }
-    .form-group label {
-      display: block;
-      font-size: 10px;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      color: #a39382;
-      margin-bottom: 8px;
-    }
-    .form-group input, .form-group select {
-      width: 100%;
-      padding: 12px 14px;
-      background: rgba(255, 255, 255, 0.04);
-      border: 1px solid rgba(255, 255, 255, 0.12);
-      border-radius: 8px;
-      color: #fff;
-      font-size: 13px;
-      outline: none;
-      transition: all 0.3s ease;
-    }
-    .form-group input:focus, .form-group select:focus {
-      border-color: #d4af37;
-      background: rgba(255, 255, 255, 0.07);
+      gap: 20px;
     }
 
-    .file-input-wrapper {
-      position: relative;
+    .field-group label {
+      display: block;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: #706057;
+      margin-bottom: 6px;
     }
-    .file-input-wrapper input[type="file"] {
-      display: none;
+
+    .field-group input, .field-group select {
+      width: 100%;
+      padding: 12px 14px;
+      background: #F4F1EA;
+      border: 1px solid rgba(44, 26, 20, 0.15);
+      border-radius: 2px;
+      color: #2C1A14;
+      font-size: 13px;
+      outline: none;
     }
+
+    .field-group input:focus, .field-group select:focus {
+      border-color: #2C1A14;
+    }
+
     .file-btn {
       display: block;
       width: 100%;
       padding: 12px;
-      background: rgba(212, 175, 55, 0.1);
-      border: 1px dashed #d4af37;
-      border-radius: 8px;
-      color: #d4af37;
+      background: #F4F1EA;
+      border: 1px dashed rgba(44, 26, 20, 0.3);
+      color: #2C1A14;
       text-align: center;
       font-size: 11px;
-      letter-spacing: 1px;
-      text-transform: uppercase;
+      font-weight: 500;
       cursor: pointer;
-      transition: all 0.3s ease;
-    }
-    .file-btn:hover {
-      background: rgba(212, 175, 55, 0.2);
+      border-radius: 2px;
     }
 
-    .btn-submit {
+    .btn-add {
       grid-column: 1 / -1;
-      padding: 14px;
-      background: linear-gradient(135deg, #d4af37 0%, #aa820a 100%);
-      color: #0b0b0d;
+      padding: 16px;
+      background: #2C1A14;
+      color: #F4F1EA;
       border: none;
-      border-radius: 8px;
+      font-size: 11px;
       font-weight: 600;
       letter-spacing: 2px;
       text-transform: uppercase;
-      font-size: 11px;
       cursor: pointer;
       margin-top: 10px;
-      transition: all 0.3s ease;
+      transition: opacity 0.3s ease;
     }
-    .btn-submit:hover {
-      box-shadow: 0 0 20px rgba(212, 175, 55, 0.4);
-      transform: translateY(-2px);
+
+    .btn-add:hover {
+      opacity: 0.9;
     }
 
     /* ФИЛЬТРЫ */
     .filter-bar {
       display: flex;
-      justify-content: center;
-      gap: 12px;
+      gap: 24px;
       margin-bottom: 40px;
-      flex-wrap: wrap;
-    }
-    .filter-btn {
-      background: transparent;
-      border: 1px solid rgba(255, 255, 255, 0.15);
-      color: #a39382;
-      padding: 8px 18px;
-      border-radius: 20px;
-      font-size: 10px;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      cursor: pointer;
-      transition: all 0.3s ease;
-    }
-    .filter-btn.active, .filter-btn:hover {
-      border-color: #d4af37;
-      color: #d4af37;
-      background: rgba(212, 175, 55, 0.05);
+      border-bottom: 1px solid rgba(44, 26, 20, 0.15);
+      padding-bottom: 16px;
+      overflow-x: auto;
     }
 
-    /* СЕТКА ГАЛЕРЕИ KINFOLK / VOGUE STYLE */
+    .filter-btn {
+      background: transparent;
+      border: none;
+      color: #8C7B73;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      cursor: pointer;
+      padding-bottom: 4px;
+      position: relative;
+    }
+
+    .filter-btn.active, .filter-btn:hover {
+      color: #2C1A14;
+    }
+
+    .filter-btn.active::after {
+      content: '';
+      position: absolute;
+      bottom: -17px;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: #2C1A14;
+    }
+
+    /* СЕТКА ГАЛЕРЕИ */
     .gallery-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-      gap: 28px;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 40px;
     }
+
     .vision-card {
-      background: rgba(18, 18, 22, 0.8);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      border-radius: 14px;
-      overflow: hidden;
       display: flex;
       flex-direction: column;
-      transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
-      position: relative;
     }
-    .vision-card:hover {
-      transform: translateY(-8px);
-      border-color: rgba(212, 175, 55, 0.4);
-      box-shadow: 0 15px 35px rgba(0,0,0,0.7);
-    }
-    .img-wrapper {
+
+    .img-box {
       width: 100%;
-      height: 320px;
+      height: 420px;
+      background: #EBE6DC;
       overflow: hidden;
+      margin-bottom: 16px;
       position: relative;
     }
+
     .vision-img {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      transition: transform 0.6s ease;
+      transition: transform 0.7s cubic-bezier(0.165, 0.84, 0.44, 1);
     }
+
     .vision-card:hover .vision-img {
-      transform: scale(1.05);
+      transform: scale(1.03);
     }
-    .category-badge {
+
+    .tag-category {
       position: absolute;
-      top: 14px;
-      left: 14px;
-      background: rgba(11, 11, 13, 0.75);
-      border: 1px solid rgba(212, 175, 55, 0.4);
-      color: #d4af37;
-      font-size: 8px;
-      letter-spacing: 2px;
+      top: 12px;
+      left: 12px;
+      background: #F4F1EA;
+      color: #2C1A14;
+      font-size: 9px;
+      font-weight: 600;
+      letter-spacing: 1.5px;
       text-transform: uppercase;
-      padding: 5px 10px;
-      border-radius: 4px;
-      backdrop-filter: blur(6px);
+      padding: 6px 12px;
     }
-    .card-body {
-      padding: 20px;
+
+    .card-meta {
       display: flex;
-      flex-direction: column;
       justify-content: space-between;
-      flex-grow: 1;
+      align-items: baseline;
+      margin-bottom: 6px;
     }
+
     .card-title {
-      font-family: 'Playfair Display', serif;
       font-size: 20px;
-      color: #ffffff;
-      margin-bottom: 8px;
+      font-weight: 600;
+      letter-spacing: -0.5px;
+      color: #2C1A14;
     }
+
     .card-desc {
-      font-size: 12px;
-      color: #a39382;
+      font-size: 13px;
+      color: #706057;
       line-height: 1.5;
-      margin-bottom: 16px;
     }
-    .card-footer {
+
+    .card-action {
+      margin-top: 12px;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      border-top: 1px solid rgba(255, 255, 255, 0.06);
-      padding-top: 12px;
     }
-    .card-price {
-      font-size: 13px;
-      color: #d4af37;
-      font-weight: 500;
-    }
+
     .btn-delete {
       background: transparent;
       border: none;
-      color: #666;
+      color: #9C8C84;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
       cursor: pointer;
-      font-size: 12px;
-      transition: color 0.3s ease;
     }
+
     .btn-delete:hover {
-      color: #e74c3c;
+      color: #A33A3A;
+    }
+
+    @media (max-width: 768px) {
+      .editorial-intro {
+        grid-template-columns: 1fr;
+        gap: 24px;
+      }
+      .hero-section {
+        height: 50vh;
+      }
     }
   </style>
 </head>
 <body>
 
-  <div class="container">
-    <header>
-      <span>— PRIVATE MOODBOARD —</span>
-      <h1>Personal <i>&</i> Vision Board</h1>
-    </header>
+  <!-- ВЕРХНИЙ БАННЕР В СТИЛЕ РЕФЕРЕНСА -->
+  <section class="hero-section">
+    <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1600" class="hero-img" alt="Architectural Interior">
+    <div class="hero-overlay">
+      <div class="hero-title">We Design The Feeling Of You</div>
+      <div class="hero-footer">
+        <div class="hero-sub">Curated Vision Board & Personal Wishlist — Architectural & Editorial Living Standard.</div>
+        <button class="btn-hero" onclick="document.getElementById('formBlock').scrollIntoView({behavior: 'smooth'})">Add To Vision</button>
+      </div>
+    </div>
+  </section>
 
-    <!-- ФОРМА ДОБАВЛЕНИЯ КАРТОЧКИ -->
-    <div class="add-card">
-      <div class="form-title">✦ Добавить цель или фото в коллекцию</div>
+  <div class="container">
+
+    <!-- ЖУРНАЛЬНЫЙ БЛОК C ИНФОРМАЦИЕЙ -->
+    <section class="editorial-intro">
+      <div class="intro-title">ELLE & CO.,</div>
+      <div class="intro-text">
+        Мы верим, что окружение и эстетика — это не просто декор. Это отражение характера, вдохновения и качества жизни, к которому мы стремимся ежедневно.
+      </div>
+    </section>
+
+    <!-- ФОРМА ДОБАВЛЕНИЯ -->
+    <div class="form-section" id="formBlock">
+      <div class="form-header">✦ Добавить объект желания</div>
       <form id="visionForm">
         <div class="form-grid">
-          <div class="form-group">
-            <label>Название *</label>
-            <input type="text" id="titleInput" placeholder="например: Париж, Отель Costes" required>
+          <div class="field-group">
+            <label>Название объекта *</label>
+            <input type="text" id="titleInput" placeholder="например: Побережье Амальфи" required>
           </div>
-          
-          <div class="form-group">
+
+          <div class="field-group">
             <label>Категория</label>
             <select id="categoryInput">
-              <option value="Travel">✈️ Travel & Escapes</option>
-              <option value="Style">👗 Outfits & Style</option>
-              <option value="Living">🏡 Dream Living</option>
-              <option value="Career">💼 Career & Ambitions</option>
-              <option value="Wishlist">🛍️ Wishlist & Luxuries</option>
-              <option value="Personal">📸 Personal & Vibe</option>
+              <option value="Travel">Travel & Escapes</option>
+              <option value="Style">Outfits & Style</option>
+              <option value="Living">Dream Living</option>
+              <option value="Career">Career & Ambitions</option>
+              <option value="Wishlist">Wishlist & Luxuries</option>
+              <option value="Personal">Personal & Vibe</option>
             </select>
           </div>
 
-          <div class="form-group">
-            <label>Загрузить своё фото</label>
-            <div class="file-input-wrapper">
-              <label for="fileInput" class="file-btn" id="fileBtnText">📁 Выбрать файл с телефона</label>
-              <input type="file" id="fileInput" accept="image/*">
-            </div>
+          <div class="field-group">
+            <label>Загрузить фото</label>
+            <label for="fileInput" class="file-btn" id="fileBtnText">📁 Выбрать файл с устройства</label>
+            <input type="file" id="fileInput" accept="image/*" style="display:none;">
           </div>
 
-          <div class="form-group">
-            <label>Или вставить URL картинки</label>
+          <div class="field-group">
+            <label>Или вставить URL фото</label>
             <input type="url" id="urlInput" placeholder="https://images.unsplash.com/...">
           </div>
 
-          <div class="form-group" style="grid-column: span 2;">
-            <label>Описание / Заметка</label>
-            <input type="text" id="descInput" placeholder="Опишите ваши эмоции или детали...">
+          <div class="field-group" style="grid-column: span 2;">
+            <label>Заметка / Описание</label>
+            <input type="text" id="descInput" placeholder="Ваши мысли или о каком именно месте/предмете идёт речь...">
           </div>
 
-          <button type="submit" class="btn-submit">Добавить на Vision Board</button>
+          <button type="submit" class="btn-add">Сохранить в реестр</button>
         </div>
       </form>
     </div>
 
-    <!-- ФИЛЬТРЫ КАТЕГОРИЙ -->
+    <!-- ФИЛЬТРЫ -->
     <div class="filter-bar">
-      <button class="filter-btn active" onclick="filterCategory('All')">Все</button>
-      <button class="filter-btn" onclick="filterCategory('Travel')">Travel</button>
-      <button class="filter-btn" onclick="filterCategory('Style')">Style</button>
-      <button class="filter-btn" onclick="filterCategory('Living')">Living</button>
-      <button class="filter-btn" onclick="filterCategory('Career')">Career</button>
-      <button class="filter-btn" onclick="filterCategory('Wishlist')">Wishlist</button>
-      <button class="filter-btn" onclick="filterCategory('Personal')">Personal</button>
+      <button class="filter-btn active" onclick="filterCategory('All', this)">Все объекты</button>
+      <button class="filter-btn" onclick="filterCategory('Travel', this)">Travel</button>
+      <button class="filter-btn" onclick="filterCategory('Style', this)">Style</button>
+      <button class="filter-btn" onclick="filterCategory('Living', this)">Living</button>
+      <button class="filter-btn" onclick="filterCategory('Career', this)">Career</button>
+      <button class="filter-btn" onclick="filterCategory('Wishlist', this)">Wishlist</button>
+      <button class="filter-btn" onclick="filterCategory('Personal', this)">Personal</button>
     </div>
 
-    <!-- ГАЛЕРЕЯ -->
+    <!-- СЕТКА ГАЛЕРЕИ -->
     <div class="gallery-grid" id="galleryGrid"></div>
+
   </div>
 
   <script>
-    let visionItems = JSON.parse(localStorage.getItem('my_vision_board')) || [
+    let visionItems = JSON.parse(localStorage.getItem('editorial_vision')) || [
       {
         id: 1,
-        title: "Амальфитанское побережье",
-        category: "Travel",
-        desc: "Утренний кофе с видом на море и скалы Италии.",
-        image: "https://images.unsplash.com/photo-1533105079780-92b9be482077?q=80&w=800"
+        title: "Архитектурная вилла",
+        category: "Living",
+        desc: "Минимализм, натуральное дерево, высокие арки и мягкий дневной свет.",
+        image: "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?q=80&w=800"
       },
       {
         id: 2,
-        title: "Old Money Style Outfit",
-        category: "Style",
-        desc: "Кашемировый свитер, шелковая юбка и лаконичные украшения.",
-        image: "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=800"
+        title: "Путешествие в Токио",
+        category: "Travel",
+        desc: "Атмосферные места, дизайн-отели и локальная эстетика.",
+        image: "https://images.unsplash.com/photo-1503899036084-c55cdd92da26?q=80&w=800"
       },
       {
         id: 3,
-        title: "Светлая студия с панорамой",
-        category: "Living",
-        desc: "Просторная гостиная с высокими потолками и естественным светом.",
-        image: "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?q=80&w=800"
+        title: "Кашемир и монохром",
+        category: "Style",
+        desc: "Лаконичный базовый гардероб в тёплых бежевых тонах.",
+        image: "https://images.unsplash.com/photo-1434389677669-e08b4cac3105?q=80&w=800"
       }
     ];
 
     let selectedFileData = null;
     let currentFilter = 'All';
 
-    // Слушатель выбора файла
     document.getElementById('fileInput').addEventListener('change', function(e) {
       const file = e.target.files[0];
       if (file) {
-        document.getElementById('fileBtnText').textContent = '✓ Фото выбрано: ' + file.name;
+        document.getElementById('fileBtnText').textContent = '✓ Загружено: ' + file.name;
         const reader = new FileReader();
         reader.onload = function(event) {
           selectedFileData = event.target.result;
@@ -368,7 +466,6 @@
       }
     });
 
-    // Отрисовка карточек
     function renderGallery() {
       const grid = document.getElementById('galleryGrid');
       grid.innerHTML = '';
@@ -381,28 +478,25 @@
         const card = document.createElement('div');
         card.className = 'vision-card';
         card.innerHTML = `
-          <div class="img-wrapper">
-            <span class="category-badge">${item.category}</span>
+          <div class="img-box">
+            <span class="tag-category">${item.category}</span>
             <img src="${item.image}" class="vision-img" alt="${item.title}">
           </div>
-          <div class="card-body">
-            <div>
-              <div class="card-title">${item.title}</div>
-              <div class="card-desc">${item.desc || ''}</div>
-            </div>
-            <div class="card-footer">
-              <span style="font-size: 10px; color: #666;">✦ APPROVED</span>
-              <button class="btn-delete" onclick="deleteItem(${item.id})">Удалить</button>
-            </div>
+          <div class="card-meta">
+            <div class="card-title">${item.title}</div>
+          </div>
+          <div class="card-desc">${item.desc || ''}</div>
+          <div class="card-action">
+            <span style="font-size: 10px; letter-spacing: 1px; color: #8C7B73; text-transform: uppercase;">VERIFIED ACCESS</span>
+            <button class="btn-delete" onclick="deleteItem(${item.id})">Удалить</button>
           </div>
         `;
         grid.appendChild(card);
       });
 
-      localStorage.setItem('my_vision_board', JSON.stringify(visionItems));
+      localStorage.setItem('editorial_vision', JSON.stringify(visionItems));
     }
 
-    // Добавление
     document.getElementById('visionForm').addEventListener('submit', function(e) {
       e.preventDefault();
 
@@ -411,7 +505,7 @@
       const desc = document.getElementById('descInput').value;
       const url = document.getElementById('urlInput').value;
 
-      let imageToUse = selectedFileData || url || 'https://images.unsplash.com/photo-1512436991641-6745cdb1723f?q=80&w=800';
+      let imageToUse = selectedFileData || url || 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=800';
 
       const newItem = {
         id: Date.now(),
@@ -424,23 +518,20 @@
       visionItems.unshift(newItem);
       renderGallery();
 
-      // Сброс формы
       this.reset();
       selectedFileData = null;
-      document.getElementById('fileBtnText').textContent = '📁 Выбрать файл с телефона';
+      document.getElementById('fileBtnText').textContent = '📁 Выбрать файл с устройства';
     });
 
-    // Удаление
     function deleteItem(id) {
       visionItems = visionItems.filter(i => i.id !== id);
       renderGallery();
     }
 
-    // Фильтрация
-    function filterCategory(cat) {
+    function filterCategory(cat, btn) {
       currentFilter = cat;
-      document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
-      event.target.classList.add('active');
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
       renderGallery();
     }
 
